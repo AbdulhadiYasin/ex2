@@ -58,6 +58,9 @@ public:
     GameStatus getGameStatus() const;
 
     //TODO: complete the Mtmchkin class.
+    Mtmchkin(const Mtmchkin&) = default;
+    ~Mtmchkin() = default;
+    Mtmchkin& operator=(const Mtmchkin& other) = default;
 
 private:
     //TODO: complete the Mtmchkin class.
