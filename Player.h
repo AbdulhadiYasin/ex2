@@ -8,9 +8,6 @@
 #ifndef Player_h
 #define Player_h
 
-#include <string>
-#include "utilities.h"
-
 class Player {
 public:
     /*
@@ -22,7 +19,7 @@ public:
      * @return
      *      A new instance of Player.
     */
-    Player(char* name, int maxHp = 100, int force = 5);
+    Player(const char* name, int maxHp = 100, int force = 5);
     
     /*
      * Adds the said amount of coins to the receiver's `fortune`.
@@ -120,7 +117,7 @@ public:
     Player& operator=(const Player& other) = default;
     
 private:
-    char* m_name;
+    const char* m_name;
     int m_maxHp;
     int m_health;
     int m_force;

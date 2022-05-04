@@ -5,13 +5,12 @@
 //  Created by Abdul Hadi Yasin on 04/05/2022.
 //
 
-#include <stdio.h>
 #include "utilities.h"
 #include "Card.h"
 
 Card::Card(CardType type, const CardStats& stats){
-    this->m_effect = type;
-    this->m_stats = stats;
+    m_effect = type;
+    m_stats = stats;
 }
 
 void Card::applyEncounter(Player &player) const {
@@ -25,6 +24,7 @@ void Card::applyEncounter(Player &player) const {
             } else {
                 // The player is stronger than the monster, the player winns battle.
                 player.addCoins(m_stats.loot);
+                player.levelUp();
                 printBattleResult(true);
             }
             break;
@@ -34,7 +34,7 @@ void Card::applyEncounter(Player &player) const {
             break;
         } case CardType::Heal: {
             if(player.pay(m_stats.cost))
-                player.buff(m_stats.heal);
+                player.heal(m_stats.heal);
             break;
         } case CardType::Treasure: {
             player.addCoins(m_stats.loot);
