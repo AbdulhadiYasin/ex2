@@ -22,7 +22,7 @@ public:
      * @return
      *      A new instance of Player.
     */
-    Player(std::string name, int maxHp = 100, int force = 5);
+    Player(char* name, int maxHp = 100, int force = 5);
     
     /*
      * Adds the said amount of coins to the receiver's `fortune`.
@@ -112,11 +112,12 @@ public:
     */
     void printInfo() const;
 private:
-    std::string name;
-    const int maxHp;
+    char* name;
+    int maxHp;
     int health;
     int force;
     int coins;
+    int level;
 };
 
 #endif /* Player_h */
