@@ -111,13 +111,21 @@ public:
      *      void
     */
     void printInfo() const;
+    
+    /*
+     * Here we are explicitly telling the compiler to use the default methods
+    */
+    Player(const Player&) = default;
+    ~Player() = default;
+    Player& operator=(const Player& other) = default;
+    
 private:
-    char* name;
-    int maxHp;
-    int health;
-    int force;
-    int coins;
-    int level;
+    char* m_name;
+    int m_maxHp;
+    int m_health;
+    int m_force;
+    int m_coins;
+    int m_level;
 };
 
 #endif /* Player_h */
