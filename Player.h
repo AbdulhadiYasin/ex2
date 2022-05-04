@@ -8,6 +8,9 @@
 #ifndef Player_h
 #define Player_h
 
+#define DEFAULT_MAX_HEALTH 100
+#define DEFAULT_FORCE 5
+
 class Player {
 public:
     /*
@@ -19,7 +22,7 @@ public:
      * @return
      *      A new instance of Player.
     */
-    Player(const char* name, int maxHp = 100, int force = 5);
+    Player(const char* name, int maxHp = DEFAULT_MAX_HEALTH, int force = DEFAULT_FORCE);
     
     /*
      * Adds the said amount of coins to the receiver's `fortune`.

@@ -17,6 +17,10 @@ Mtmchkin::Mtmchkin(const char* playerName, const Card* cardsArray, int numOfCard
     m_status = GameStatus::MidGame;
 }
 
+Mtmchkin :: ~ Mtmchkin(){
+    delete &m_player;
+};
+
 void Mtmchkin::playNextCard(){
     if(m_numberOfCards == 0)
         return;
