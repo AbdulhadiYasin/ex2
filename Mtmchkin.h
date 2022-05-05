@@ -57,14 +57,6 @@ public:
      */
     GameStatus getGameStatus() const;
 
-    /*
-     * D'tor of the game:
-     */
-    ~Mtmchkin();
-    
-    Mtmchkin(const Mtmchkin&) = default;
-    Mtmchkin& operator=(const Mtmchkin& other) = default;
-
 private:
     //TODO: complete the Mtmchkin class.
     Player m_player;
