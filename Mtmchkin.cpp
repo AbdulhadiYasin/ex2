@@ -1,13 +1,8 @@
-#ifndef EX2_GAME_H
-#define EX2_GAME_H
-#include "Card.h"
-#include <iostream>
-#include "Mtmchkin.h"
+
 #include "Player.h"
+#include "Mtmchkin.h"
 
-
-Mtmchkin::Mtmchkin(const char* playerName, const Card* cardsArray, int numOfCards){
-	m_player = playerName;
+Mtmchkin::Mtmchkin(const char* playerName, const Card* cardsArray, int numOfCards) : m_player(playerName) {
 	m_cards = cardsArray;
 	m_numberOfCards = numOfCards;
 	m_cardIndex = 0;
@@ -15,12 +10,12 @@ Mtmchkin::Mtmchkin(const char* playerName, const Card* cardsArray, int numOfCard
 }
 
 
-void playNextCard() {
+void Mtmchkin::playNextCard() {
 	if (m_numberOfCards == 0)
 		return;
 
 	if (m_cardIndex >= m_numberOfCards)
-		m_cardInndex = 0;
+		m_cardIndex = 0;
 
 	Card temp = m_cards[m_cardIndex];
 	temp.printInfo();
@@ -40,12 +35,12 @@ void playNextCard() {
 
 }
 
-bool isOver() {
-	if (m_status == Win || m_status == Loss)
+bool Mtmchkin::isOver() {
+	if (m_status == GameStatus::Win || m_status == GameStatus::Loss)
 		return true;
 	return false;
 }
 
-GameStatus getGameStatus() const {
+GameStatus Mtmchkin::getGameStatus() const {
 	return m_status;
 }
