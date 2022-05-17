@@ -7,6 +7,7 @@
 
 #ifndef Player_h
 #define Player_h
+#include <string>
 
 #define DEFAULT_MAX_HEALTH 100
 #define DEFAULT_FORCE 5
@@ -22,8 +23,8 @@ public:
      * @return
      *      A new instance of Player.
     */
-    Player(const char* name, int maxHp = DEFAULT_MAX_HEALTH, int force = DEFAULT_FORCE);
-    
+    Player(const std::string name, int maxHp = DEFAULT_MAX_HEALTH, int force = DEFAULT_FORCE);
+
     /*
      * Adds the said amount of coins to the receiver's `fortune`.
      *
@@ -32,7 +33,7 @@ public:
      *      void
      */
     void addCoins(int amount);
-    
+
     /*
      * deducts the said amount of coins out of the receiver's `fortune` if the
      * player can afford the transaction, othwerise does nothing.
@@ -42,7 +43,7 @@ public:
      *      `true` if transaction is valid the amount was deducted, otherwise `false`.
      */
     bool pay(int price);
-    
+
     /*
      * Adds the said amount of health points to the receiver's `health` (hp).
      *
@@ -51,7 +52,7 @@ public:
      *      void
      */
     void heal(int hp);
-    
+
     /*
      * deducts the said amount of health points out of the receiver's `health`
      * (hp).
@@ -61,7 +62,7 @@ public:
      *      void
      */
     void damage(int hp);
-    
+
     /*
      * Adds the said amount of force points to the receiver's `force`.
      *
@@ -70,7 +71,7 @@ public:
      *      void
      */
     void buff(int force);
-    
+
     /*
      * Increases the receiver's (player) level by the one level, up to a maximum
      * level of level-10.
@@ -79,7 +80,7 @@ public:
      *      void
      */
     void levelUp();
-    
+
     /*
      * Returns current level of the receiver (player).
      *
@@ -87,7 +88,7 @@ public:
      *      The current level of the player.
      */
     int getLevel() const;
-    
+
     /*
      * Returns attack strength of the receiver (player).
      *
@@ -95,7 +96,7 @@ public:
      *      The attack strength of the player.
      */
     int getAttackStrength() const;
-    
+
     /*
      * Returns whether the receiver (player) is knocked out or not.
      *
@@ -103,7 +104,7 @@ public:
      *      `true` if player has been knocked out, otherwise `false`.
      */
     bool isKnockedOut() const;
-    
+
     /*
      * Prints the player info:
      *
@@ -111,16 +112,16 @@ public:
      *      void
     */
     void printInfo() const;
-    
+
     /*
      * Here we are explicitly telling the compiler to use the default methods
     */
     Player(const Player&) = default;
     ~Player() = default;
     Player& operator=(const Player& other) = default;
-    
+
 private:
-    const char* m_name;
+    std::string m_name;
     int m_maxHp;
     int m_health;
     int m_force;

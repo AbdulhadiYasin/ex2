@@ -6,6 +6,7 @@
 #define EX2_GAME_H
 #include "Card.h"
 #include <iostream>
+#include "Player.h"
 
 /*
  * GameStatus:
@@ -13,7 +14,7 @@
  * Win - The player reached level 10.
  * Loss - The player's HP is 0.
 */
-enum class GameStatus{Win, Loss, MidGame};
+enum class GameStatus { Win, Loss, MidGame };
 
 class Mtmchkin {
 public:
@@ -46,7 +47,7 @@ public:
      *          True if the game ended
      *          False otherwise
      */
-    bool isOver();
+    bool isOver() const;
 
 
     /*
@@ -57,22 +58,18 @@ public:
      */
     GameStatus getGameStatus() const;
 
-    /*
-     * D'tor of the game:
-     */
+    //TODO: complete the Mtmchkin class.
     ~Mtmchkin();
-    
+
     Mtmchkin(const Mtmchkin&) = default;
     Mtmchkin& operator=(const Mtmchkin& other) = default;
-
 private:
     //TODO: complete the Mtmchkin class.
-    Player m_player;
-    const Card* m_cards;
-    int m_numberOfCards;
-    int m_cardIndex;
     GameStatus m_status;
-    
+    Player m_player;
+    int m_numberOfCards;
+    /*const*/ Card* m_cards;
+    int m_cardIndex;
 };
 
 
