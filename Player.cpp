@@ -9,15 +9,39 @@
 #include "Player.h"
 
 #define MAX_LEVEL 10
+#define DEFAULT_MAX_HP 100
+#define DEFAULT_FORCE 5
+#define DEFAULT_COINS 0
 
 Player::Player(const std::string name, int maxHp, int force) : m_name(name), m_maxHp(maxHp), m_health(maxHp), m_force(force), m_coins(0), m_level(1) {
+    
+    if(m_force < 0)
+        m_force = DEFAULT_FORCE;
+    
+    if(m_coins < 0)
+        m_coins = DEFAULT_COINS;
+    
+    if(maxHp < 0)
+        m_maxHp = DEFAULT_MAX_HP;
+    
+    if(m_health > m_maxHp)
+        m_health = m_maxHp;
+    
+    if(m_health < 0)
+        m_health = 0;
 }
 
 void Player::addCoins(int amount) {
+    if(amount <= 0)
+        return;
+    
     m_coins += amount;
 }
 
 bool Player::pay(int price) {
+    if(price <= 0)
+        return true;
+    
     if (m_coins < price)
         return false;
 
@@ -49,6 +73,9 @@ void Player::damage(int hp) {
 }
 
 void Player::buff(int force) {
+    if(force <= 0)
+        return;
+    
     m_force += force;
 }
 
