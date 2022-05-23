@@ -9,8 +9,8 @@
 #include <stdexcept>
 
 HealthPoints::HealthPoints(int maxHealth): m_maxValue(maxHealth), m_value(maxHealth) {
-    if(maxHealth < 0)
-        throw std::invalid_argument("Invalid max health value");
+    if(maxHealth <= 0)
+        throw HealthPoints::InvalidArgument("Invalid max health value");
 }
 
 

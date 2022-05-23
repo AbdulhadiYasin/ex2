@@ -12,6 +12,7 @@
 
 #include <stdio.h>
 #include <iostream>
+#include <stdexcept>
 using namespace std;
 
 class HealthPoints {
@@ -25,10 +26,19 @@ public:
     bool operator>(const HealthPoints& rhs);
     bool operator>=(const HealthPoints& rhs);
     friend ostream& operator<<(ostream& os, const HealthPoints& dt);
+    
+    class InvalidArgument;
 private:
     int m_value = DEFAULT_MAX_HEALTH;
     int m_maxValue = DEFAULT_MAX_HEALTH;
 
+};
+
+class HealthPoints::InvalidArgument: public std::invalid_argument {
+public:
+    InvalidArgument(char const* const message) throw() : std::invalid_argument(message) {
+        
+    }
 };
 
 HealthPoints operator+(HealthPoints& lhs, const int rhs);
