@@ -11,9 +11,28 @@
 HealthPoints::HealthPoints(int maxHealth): m_maxValue(maxHealth), m_value(maxHealth) {
     if(maxHealth < 0)
         throw std::invalid_argument("Invalid max health value");
-        
-        
 }
+
+
+bool HealthPoints::operator==(const HealthPoints& rhs) {
+    return m_value == rhs.m_value;
+}
+bool HealthPoints::operator!=(const HealthPoints& rhs) {
+    return m_value != rhs.m_value;
+}
+bool HealthPoints::operator<(const HealthPoints& rhs) {
+    return m_value < rhs.m_value;
+}
+bool HealthPoints::operator<=(const HealthPoints& rhs) {
+    return m_value <= rhs.m_value;
+}
+bool HealthPoints::operator>(const HealthPoints& rhs) {
+    return m_value > rhs.m_value;
+}
+bool HealthPoints::operator>=(const HealthPoints& rhs) {
+    return m_value >= rhs.m_value;
+}
+
 
 HealthPoints& HealthPoints::operator+=(const int rhs) {
     m_value += rhs;
@@ -24,12 +43,10 @@ HealthPoints& HealthPoints::operator+=(const int rhs) {
         
     return *this;
 }
-
 HealthPoints& operator-=(HealthPoints& lhs, const int rhs) {
     lhs += (-1*rhs);
     return lhs;
 }
-
 HealthPoints operator+(HealthPoints& lhs, const int rhs) {
     HealthPoints temp = lhs;
     return temp += rhs;
